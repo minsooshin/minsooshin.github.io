@@ -227,10 +227,12 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Q. Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
+            <p><a href="https://leetcode.com/problems/two-sum/#/description" target="_blank" rel="external">leetcode 1. Two Sum</a></p>
+<p>Q. Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
 <p><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [2, 7, 11, 15], target = 9,</div><div class="line"></div><div class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">return [0, 1].</div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @param &#123;number&#125; target</div><div class="line"> * @return &#123;number[]&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">twoSum</span>(<span class="params">nums, target</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Solution</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @param &#123;number&#125; target</div><div class="line"> * @return &#123;number[]&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">twoSum</span>(<span class="params">nums, target</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = &#123;&#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">const</span> diff = target - nums[i]</div><div class="line">    <span class="keyword">if</span> (seen[diff] !== <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">return</span> [seen[diff], i]</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      seen[nums[i]] = i</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
         
         </div>
@@ -241,7 +243,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj281m53l0000bs7hwazdy4er" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj2823mgn0000hk7h2vdjbxvf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
