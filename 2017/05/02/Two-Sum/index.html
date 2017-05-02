@@ -6,13 +6,13 @@
     <title>Two Sum | Mason&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Source: leetcode 1. Two Sum Q. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution,">
-<meta name="keywords" content="easy,array,hash table">
+<meta name="keywords" content="easy,hash table,array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Two Sum">
 <meta property="og:url" content="https://minsooshin.github.io/2017/05/02/Two-Sum/index.html">
 <meta property="og:site_name" content="Mason&#39;s blog">
 <meta property="og:description" content="Source: leetcode 1. Two Sum Q. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution,">
-<meta property="og:updated_time" content="2017-05-02T21:43:19.000Z">
+<meta property="og:updated_time" content="2017-05-02T21:58:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Two Sum">
 <meta name="twitter:description" content="Source: leetcode 1. Two Sum Q. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution,">
@@ -148,11 +148,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                1
-                <span>post</span>
+                2
+                <span>posts</span>
             </div>
             <div class="article-info-block">
-                3
+                4
                 <span>tags</span>
             </div>
         </div>
@@ -237,7 +237,7 @@
 <p><strong>Example:</strong></p>
 <p>Given nums = [2, 7, 11, 15], target = 9,</p>
 <p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-<p><strong>Solution</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @param &#123;number&#125; target</div><div class="line"> * @return &#123;number[]&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">twoSum</span>(<span class="params">nums, target</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = &#123;&#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">const</span> diff = target - nums[i]</div><div class="line">    <span class="keyword">if</span> (seen[diff] !== <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">return</span> [seen[diff], i]</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      seen[nums[i]] = i</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>Solution</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @param &#123;number&#125; target</div><div class="line"> * @return &#123;number[]&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">twoSum</span> (<span class="params">nums, target</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = &#123;&#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">const</span> diff = target - nums[i]</div><div class="line">    <span class="keyword">if</span> (seen[diff] !== <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">return</span> [seen[diff], i]</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      seen[nums[i]] = i</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -248,7 +248,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj2834pn500006o7hjvkzui4w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj284fw4a0001ls7hfaoh69se" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -323,6 +323,20 @@
     </div>
     
         
+<nav id="article-nav">
+    
+        <a href="/2017/05/02/Single-Number/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Single Number
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
 
     
 </article>
@@ -353,6 +367,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/02/Single-Number/" class="title">Single Number</a></p>
+                            <p class="item-date"><time datetime="2017-05-02T21:49:32.000Z" itemprop="datePublished">2017-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
                             <p class="item-title"><a href="/2017/05/02/Two-Sum/" class="title">Two Sum</a></p>
                             <p class="item-date"><time datetime="2017-05-02T20:58:00.000Z" itemprop="datePublished">2017-05-02</time></p>
                         </div>
@@ -367,7 +390,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -376,7 +399,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -385,7 +408,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit-manipulation/">bit manipulation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
