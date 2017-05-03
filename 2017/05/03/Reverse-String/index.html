@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Two Sum | Mason&#39;s blog</title>
+    <title>Reverse String | Mason&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Source: leetcode 1. Two Sum Q. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution,">
-<meta name="keywords" content="easy,hash table,array">
+    <meta name="description" content="Source: leetcode 344. Reverse String Q. Write a function that takes a string as input and returns the string reversed. Example:Given s = “hello”, return “olleh” Solution 1: Using two pointers123456789">
+<meta name="keywords" content="easy,string,two pointers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Two Sum">
-<meta property="og:url" content="https://minsooshin.github.io/2017/05/02/Two-Sum/index.html">
+<meta property="og:title" content="Reverse String">
+<meta property="og:url" content="https://minsooshin.github.io/2017/05/03/Reverse-String/index.html">
 <meta property="og:site_name" content="Mason&#39;s blog">
-<meta property="og:description" content="Source: leetcode 1. Two Sum Q. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution,">
-<meta property="og:updated_time" content="2017-05-02T21:58:25.000Z">
+<meta property="og:description" content="Source: leetcode 344. Reverse String Q. Write a function that takes a string as input and returns the string reversed. Example:Given s = “hello”, return “olleh” Solution 1: Using two pointers123456789">
+<meta property="og:updated_time" content="2017-05-03T16:36:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Two Sum">
-<meta name="twitter:description" content="Source: leetcode 1. Two Sum Q. Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution,">
+<meta name="twitter:title" content="Reverse String">
+<meta name="twitter:description" content="Source: leetcode 344. Reverse String Q. Write a function that takes a string as input and returns the string reversed. Example:Given s = “hello”, return “olleh” Solution 1: Using two pointers123456789">
     
 
     
@@ -190,7 +190,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-Two-Sum" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Reverse-String" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -198,7 +198,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Two Sum
+            Reverse String
         </h1>
     
 
@@ -207,8 +207,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/05/02/Two-Sum/">
-            <time datetime="2017-05-02T20:58:00.000Z" itemprop="datePublished">2017-05-02</time>
+        <a href="/2017/05/03/Reverse-String/">
+            <time datetime="2017-05-03T16:22:02.000Z" itemprop="datePublished">2017-05-03</time>
         </a>
     </div>
 
@@ -222,7 +222,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/array/">array</a>, <a class="tag-link" href="/tags/easy/">easy</a>, <a class="tag-link" href="/tags/hash-table/">hash table</a>
+        <a class="tag-link" href="/tags/easy/">easy</a>, <a class="tag-link" href="/tags/string/">string</a>, <a class="tag-link" href="/tags/two-pointers/">two pointers</a>
     </div>
 
                     </div>
@@ -233,13 +233,11 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Source: <a href="https://leetcode.com/problems/two-sum/#/description" target="_blank" rel="external">leetcode 1. Two Sum</a></p>
-<p>Q. Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have <strong><em>exactly</em></strong> one solution, and you may not use the <em>same</em> element twice.</p>
-<p><strong>Example:</strong></p>
-<p>Given nums = [2, 7, 11, 15], target = 9,</p>
-<p>Because nums[0] + nums[1] = 2 + 7 = 9,<br>return [0, 1].</p>
-<p><strong>Solution</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @param &#123;number&#125; target</div><div class="line"> * @return &#123;number[]&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">twoSum</span> (<span class="params">nums, target</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = &#123;&#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">const</span> diff = target - nums[i]</div><div class="line">    <span class="keyword">if</span> (seen[diff] !== <span class="literal">undefined</span>) &#123;</div><div class="line">      <span class="keyword">return</span> [seen[diff], i]</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      seen[nums[i]] = i</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <p>Source: <a href="https://leetcode.com/problems/reverse-string/#/description" target="_blank" rel="external">leetcode 344. Reverse String</a></p>
+<p>Q. Write a function that takes a string as input and returns the string reversed.</p>
+<p><strong>Example:</strong><br>Given s = “hello”, return “olleh”</p>
+<p><strong>Solution 1:</strong> Using two pointers<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr = s.split(<span class="string">''</span>)</div><div class="line">  <span class="keyword">const</span> half = arr.length / <span class="number">2</span> | <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; half; i++) &#123;</div><div class="line">    <span class="keyword">const</span> temp = arr[i]</div><div class="line">    arr[i] = arr[arr.length - i - <span class="number">1</span>]</div><div class="line">    arr[s.length - i - <span class="number">1</span>] = temp</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr.join(<span class="string">''</span>)</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p><strong>Solution 2:</strong>: Using reverse array<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> reversed = <span class="string">''</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = s.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">    reversed += s.charAt(i)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> reversed</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -250,7 +248,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj297gtar0004vw7hszxnwkp9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj297gtam0001vw7ha7v5qt02" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -318,7 +316,7 @@
 
             
     
-        <a href="https://minsooshin.github.io/2017/05/02/Two-Sum/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://minsooshin.github.io/2017/05/02/Two-Sum/">Comments</a>
+        <a href="https://minsooshin.github.io/2017/05/03/Reverse-String/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://minsooshin.github.io/2017/05/03/Reverse-String/">Comments</a>
     
 
         </footer>
@@ -327,15 +325,11 @@
         
 <nav id="article-nav">
     
-        <a href="/2017/05/02/Single-Number/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Single Number
-                
-            </div>
-        </a>
     
+        <a href="/2017/05/02/Single-Number/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Single Number</div>
+        </a>
     
 </nav>
 
@@ -441,9 +435,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'https://minsooshin.github.io/2017/05/02/Two-Sum/';
+            this.page.url = 'https://minsooshin.github.io/2017/05/03/Reverse-String/';
         
-        this.page.identifier = 'Two-Sum';
+        this.page.identifier = 'Reverse-String';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
