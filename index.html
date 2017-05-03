@@ -242,7 +242,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/" data-id="cj297r1910000zy7h0vrk6wiy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/" data-id="cj297y4ja00002u7hmhmvdtg0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -367,7 +367,7 @@
 <p>Q. Write a function that takes a string as input and returns the string reversed.</p>
 <p><strong>Example:</strong><br>Given s = “hello”, return “olleh”</p>
 <p><strong>Solution 1:</strong> Using two pointers<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr = s.split(<span class="string">''</span>)</div><div class="line">  <span class="keyword">const</span> half = arr.length / <span class="number">2</span> | <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; half; i++) &#123;</div><div class="line">    <span class="keyword">const</span> temp = arr[i]</div><div class="line">    arr[i] = arr[arr.length - i - <span class="number">1</span>]</div><div class="line">    arr[s.length - i - <span class="number">1</span>] = temp</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr.join(<span class="string">''</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>Solution 2:</strong>: Using reverse array<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> reversed = <span class="string">''</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = s.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">    reversed += s.charAt(i)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> reversed</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>Solution 2:</strong> Using simple string concatenation<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> reversed = <span class="string">''</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = s.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">    reversed += s.charAt(i)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> reversed</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -378,7 +378,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj297r1950001zy7hhtg7kg1g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj297y4je00012u7hkkunbocn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -514,7 +514,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Single-Number/" data-id="cj297r19d0004zy7hjrxue3zr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/02/Single-Number/" data-id="cj297y4jj00042u7hnrnxlhfn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -652,7 +652,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj297r19f0005zy7hkf96hh0g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj297y4jl00052u7hca32htqf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
