@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://minsooshin.github.io/2017/05/03/Reverse-String/index.html">
 <meta property="og:site_name" content="Mason&#39;s blog">
 <meta property="og:description" content="Source: leetcode 344. Reverse String Q. Write a function that takes a string as input and returns the string reversed. Example:Given s = “hello”, return “olleh” Solution 1: Using two pointers123456789">
-<meta property="og:updated_time" content="2017-05-03T16:36:10.000Z">
+<meta property="og:updated_time" content="2017-05-03T16:41:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reverse String">
 <meta name="twitter:description" content="Source: leetcode 344. Reverse String Q. Write a function that takes a string as input and returns the string reversed. Example:Given s = “hello”, return “olleh” Solution 1: Using two pointers123456789">
@@ -150,7 +150,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -236,7 +236,7 @@
             <p>Source: <a href="https://leetcode.com/problems/reverse-string/#/description" target="_blank" rel="external">leetcode 344. Reverse String</a></p>
 <p>Q. Write a function that takes a string as input and returns the string reversed.</p>
 <p><strong>Example:</strong><br>Given s = “hello”, return “olleh”</p>
-<p><strong>Solution 1:</strong> Using two pointers<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr = s.split(<span class="string">''</span>)</div><div class="line">  <span class="keyword">const</span> half = arr.length / <span class="number">2</span> | <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; half; i++) &#123;</div><div class="line">    <span class="keyword">const</span> temp = arr[i]</div><div class="line">    arr[i] = arr[arr.length - i - <span class="number">1</span>]</div><div class="line">    arr[s.length - i - <span class="number">1</span>] = temp</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr.join(<span class="string">''</span>)</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p><strong>Solution 1:</strong> Using two pointers<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr = s.split(<span class="string">''</span>)</div><div class="line">  <span class="keyword">const</span> half = arr.length / <span class="number">2</span> | <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; half; i++) &#123;</div><div class="line">    <span class="keyword">const</span> temp = arr[i]</div><div class="line">    arr[i] = arr[arr.length - i - <span class="number">1</span>]</div><div class="line">    arr[s.length - i - <span class="number">1</span>] = temp</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr.join(<span class="string">''</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>Solution 2:</strong>: Using reverse array<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;string&#125; s</div><div class="line"> * @return &#123;string&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span> (<span class="params">s</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> reversed = <span class="string">''</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = s.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">    reversed += s.charAt(i)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> reversed</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
         
@@ -248,7 +248,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj297gtam0001vw7ha7v5qt02" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj297r1950001zy7hhtg7kg1g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -325,6 +325,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2017/05/03/Contains-Duplicate/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Contains Duplicate
+                
+            </div>
+        </a>
+    
     
         <a href="/2017/05/02/Single-Number/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -363,6 +372,15 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/03/Contains-Duplicate/" class="title">Contains Duplicate</a></p>
+                            <p class="item-date"><time datetime="2017-05-03T16:39:30.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
                             <p class="item-title"><a href="/2017/05/03/Reverse-String/" class="title">Reverse String</a></p>
                             <p class="item-date"><time datetime="2017-05-03T16:22:02.000Z" itemprop="datePublished">2017-05-03</time></p>
                         </div>
@@ -395,7 +413,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -404,7 +422,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -413,7 +431,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit-manipulation/">bit manipulation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit-manipulation/">bit manipulation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 

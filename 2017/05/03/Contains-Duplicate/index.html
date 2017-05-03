@@ -3,14 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Archive | Mason&#39;s blog</title>
+    <title>Contains Duplicate | Mason&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Mason&#39;s blog">
-<meta property="og:url" content="https://minsooshin.github.io/archives/index.html">
+    <meta name="description" content="Source: leetcode 217. Contains Duplicate Q. Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, an">
+<meta name="keywords" content="easy,array,hash table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Contains Duplicate">
+<meta property="og:url" content="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/index.html">
 <meta property="og:site_name" content="Mason&#39;s blog">
+<meta property="og:description" content="Source: leetcode 217. Contains Duplicate Q. Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, an">
+<meta property="og:updated_time" content="2017-05-03T16:44:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mason&#39;s blog">
+<meta name="twitter:title" content="Contains Duplicate">
+<meta name="twitter:description" content="Source: leetcode 217. Contains Duplicate Q. Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, an">
     
 
     
@@ -185,25 +190,21 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-Contains-Duplicate" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/03/Contains-Duplicate/">Contains Duplicate</a>
+        <h1 class="article-title" itemprop="name">
+            Contains Duplicate
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2017/05/03/Contains-Duplicate/">
@@ -212,131 +213,140 @@
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/array/">array</a>, <a class="tag-link" href="/tags/easy/">easy</a>, <a class="tag-link" href="/tags/hash-table/">hash table</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/03/Reverse-String/">Reverse String</a>
-        </h1>
-    
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Source: <a href="https://leetcode.com/problems/contains-duplicate/#/description" target="_blank" rel="external">leetcode 217. Contains Duplicate</a></p>
+<p>Q. Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+<p><strong>Solutions</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @return &#123;boolean&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">containsDuplicate</span> (<span class="params">nums</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = <span class="keyword">new</span> <span class="built_in">Set</span>()</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (seen.has(nums[i])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      seen.add(nums[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/03/Reverse-String/">
-            <time datetime="2017-05-03T16:22:02.000Z" itemprop="datePublished">2017-05-03</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/easy/">easy</a>, <a class="tag-link" href="/tags/string/">string</a>, <a class="tag-link" href="/tags/two-pointers/">two pointers</a>
-    </div>
-
-                </div>
-            </div>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/02/Single-Number/">Single Number</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/02/Single-Number/">
-            <time datetime="2017-05-02T21:49:32.000Z" itemprop="datePublished">2017-05-02</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/bit-manipulation/">bit manipulation</a>, <a class="tag-link" href="/tags/easy/">easy</a>, <a class="tag-link" href="/tags/hash-table/">hash table</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/02/Two-Sum/">Two Sum</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/02/Two-Sum/">
-            <time datetime="2017-05-02T20:58:00.000Z" itemprop="datePublished">2017-05-02</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/array/">array</a>, <a class="tag-link" href="/tags/easy/">easy</a>, <a class="tag-link" href="/tags/hash-table/">hash table</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
+
+    <a data-url="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/" data-id="cj297r1910000zy7h0vrk6wiy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/05/03/Reverse-String/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Reverse String</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
@@ -432,11 +442,13 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'https://minsooshin.github.io/2017/05/03/Contains-Duplicate/';
+        
+        this.page.identifier = 'Contains-Duplicate';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
