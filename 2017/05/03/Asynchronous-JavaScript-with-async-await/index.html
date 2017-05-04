@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mason&#39;s blog">
 <meta property="og:description" content="1. Write an Asynchronous Function with async/awaitHere, we have short function that talks with a github API. 12345678910111213const fetch = require(&apos;node-fetch&apos;)function showGithubUser(handle) &amp;#123;">
 <meta property="og:image" content="https://minsooshin.github.io/images/async_await_cover.jpg">
-<meta property="og:updated_time" content="2017-05-04T06:07:30.000Z">
+<meta property="og:updated_time" content="2017-05-04T20:19:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Asynchronous JavaScript with async&#x2F;await">
 <meta name="twitter:description" content="1. Write an Asynchronous Function with async/awaitHere, we have short function that talks with a github API. 12345678910111213const fetch = require(&apos;node-fetch&apos;)function showGithubUser(handle) &amp;#123;">
@@ -247,6 +247,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  fetch(url)</div><div class="line">    .then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.json())</div><div class="line">    .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(user.name)</div><div class="line">      <span class="built_in">console</span>.log(user.location)</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">showGithubUser(<span class="string">'minsooshin'</span>)</div></pre></td></tr></table></figure>
 <p>It loads a specific user, and once the response comes back, it parses the body as JSON. Finally, user’s name and location are logged to the console.</p>
 <p><img src="/images/async_screenshot1.png" alt="This is the result of execution"></p>
+<a id="more"></a>
 <p>Let’s see how we can convert this function into asynchronous function by using the <code>async</code> and <code>await</code> keywords.</p>
 <ol>
 <li>Make the function asynchronous by adding the <code>async</code> keyword.</li>
@@ -311,7 +312,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/" data-id="cj2a0fypq0000c0rifowz5jc6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/" data-id="cj29x7fqd000f1dri28ftiqav" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

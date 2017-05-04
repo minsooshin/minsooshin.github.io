@@ -238,66 +238,13 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <h2 id="1-Write-an-Asynchronous-Function-with-async-await"><a href="#1-Write-an-Asynchronous-Function-with-async-await" class="headerlink" title="1. Write an Asynchronous Function with async/await"></a>1. Write an Asynchronous Function with async/await</h2><p>Here, we have short function that talks with a github API.</p>
+            <p><h2 id="1-Write-an-Asynchronous-Function-with-async-await"><a href="#1-Write-an-Asynchronous-Function-with-async-await" class="headerlink" title="1. Write an Asynchronous Function with async/await"></a>1. Write an Asynchronous Function with async/await</h2><p>Here, we have short function that talks with a github API.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  fetch(url)</div><div class="line">    .then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.json())</div><div class="line">    .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(user.name)</div><div class="line">      <span class="built_in">console</span>.log(user.location)</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">showGithubUser(<span class="string">'minsooshin'</span>)</div></pre></td></tr></table></figure>
 <p>It loads a specific user, and once the response comes back, it parses the body as JSON. Finally, user’s name and location are logged to the console.</p>
-<p><img src="/images/async_screenshot1.png" alt="This is the result of execution"></p>
-<p>Let’s see how we can convert this function into asynchronous function by using the <code>async</code> and <code>await</code> keywords.</p>
-<ol>
-<li>Make the function asynchronous by adding the <code>async</code> keyword.</li>
-<li>Using the <code>await</code> operator to wait until the fetch call complete.<ul>
-<li>The <code>await</code> operator takes a promise and pause the function execution until the promise is settled.</li>
-</ul>
-</li>
-<li>Assign the return value from <code>await</code> operator to a variable.</li>
-<li>Take the body of the response and parse it as JSON.</li>
-<li>Print out the result.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">showGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> resp.json()</div><div class="line">  <span class="built_in">console</span>.log(user.name)</div><div class="line">  <span class="built_in">console</span>.log(user.location)</div><div class="line">&#125;</div><div class="line"></div><div class="line">showGithubUser(<span class="string">'minsooshin'</span>)</div></pre></td></tr></table></figure>
-<p>To use this <code>async</code>/<code>await</code>, please user node 7.6 or up.</p>
-<h2 id="2-Call-an-Asynchronous-Function-in-a-Promise-Chain"><a href="#2-Call-an-Asynchronous-Function-in-a-Promise-Chain" class="headerlink" title="2. Call an Asynchronous Function in a Promise Chain"></a>2. Call an Asynchronous Function in a Promise Chain</h2><p>Now, <code>showGithubUser</code> function fetches the user from the github API, and then prints the name and location to the console. Let’s refactor this program such that the function only retrieves the user and returns to the caller who can decide what to do with it.</p>
-<ol>
-<li>Get rid of the <code>console.log</code> lines and just return the user; the <code>showGithubUser</code> is called, it returns the promise.</li>
-<li>We can build a promise chain with the <code>.then</code> method.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">await</span> resp.json()</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(user.name)</div><div class="line">    <span class="built_in">console</span>.log(user.location)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>This example shows that it is quite easy to call an asynchronous function as part of a promise chain. Every <code>async</code> function returns a promise, so you can simply call <code>.then</code> and <code>.catch</code> of the return value.</p>
-<h2 id="3-Convert-Any-Function-into-an-Asynchronous-Function"><a href="#3-Convert-Any-Function-into-an-Asynchronous-Function" class="headerlink" title="3. Convert Any Function into an Asynchronous Function"></a>3. Convert Any Function into an Asynchronous Function</h2><p>JavaScript allows us to convert any function into an async function. So far, we’ve worked function declaration, but we haven’t yet looked at function expressions, arrow functions, or methods. Let’s convert this function declaration into a function expression.</p>
-<ol>
-<li>Cut the name, <code>fetchGithubUser</code>, and introduce a variable and then assign the function expression.</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="comment">// function expression</span></div><div class="line"><span class="keyword">const</span> fetchGithubUser = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">await</span> resp.json()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// arrow function</span></div><div class="line"><span class="comment">// const showGithubUser = async function (handle) =&gt; &#123;</span></div><div class="line"></div><div class="line">fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(user.name)</div><div class="line">    <span class="built_in">console</span>.log(user.location)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>Let’s look at a good use case for an asynchronous function expression. The <code>await</code> keyword only be used in an asynchronous functions, so we cannot use it at the top level of the file.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// this code doesn't work</span></div><div class="line"><span class="keyword">const</span> user = <span class="keyword">await</span> fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line"><span class="built_in">console</span>.log(user.name)</div><div class="line"><span class="built_in">console</span>.log(user.location)</div><div class="line"></div><div class="line"><span class="comment">// to fix, wrap with `async`</span></div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  <span class="built_in">console</span>.log(user.name)</div><div class="line">  <span class="built_in">console</span>.log(user.location)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<p>Finally, let’s implement asynchronous class method.</p>
-<ol>
-<li>define a class with <code>GithubApiClient</code> name.</li>
-<li>define a method to fetch user data.</li>
-<li>put <code>async</code> keyword in front of the method.</li>
-<li>create an instance of the class</li>
-<li>call the method with using the instance</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GithubApiClient</span> </span>&#123;</div><div class="line">  <span class="keyword">async</span> fetchUser (handle) &#123;</div><div class="line">    <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">    <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">await</span> resp.json()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> client = <span class="keyword">new</span> GithubApiClient()</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> client.fetchUser(<span class="string">'minsooshin'</span>)</div><div class="line">  <span class="built_in">console</span>.log(user.name)</div><div class="line">  <span class="built_in">console</span>.log(user.location)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h2 id="4-Handle-Errors-in-Asynchronous-functions"><a href="#4-Handle-Errors-in-Asynchronous-functions" class="headerlink" title="4. Handle Errors in Asynchronous functions"></a>4. Handle Errors in Asynchronous functions</h2><p>Let’s use the example from section 2. What happens if we tried to load a user that doesn’t actually exist? If you run the program you will get this.</p>
-<p><img src="/images/async_screenshot2.png" alt="When there is an error from promise"></p>
-<p>Let’s see what the response object looks like. We will log out the <code>user</code> instead of individual property.</p>
-<p><img src="/images/async_screenshot3.png" alt="Response object of fetchGithubUser"></p>
-<p>Our <code>fetchGithubUser</code> function always returns a promise which resolve this value. This is not what we want. Instead, we want to reject this promise with error message.</p>
-<ol>
-<li>Store the return value of the JSON to the variable</li>
-<li>If the status of the response is not successful, throw an error</li>
-<li>Add <code>catch</code> method to our promise chain</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">const</span> body = <span class="keyword">await</span> resp.json()</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (resp.status !== <span class="number">200</span>) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="built_in">Error</span>(body.message)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> body</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(user.name)</div><div class="line">    <span class="built_in">console</span>.log(user.location)</div><div class="line">  &#125;)</div><div class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Error: <span class="subst">$&#123;err.message&#125;</span>`</span>)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>This approach works because asynchronous function will automatically return a rejected promise whenever an error is thrown. This is what we can simply write a <code>catch</code> method and then deal with a rejected promise.<br>Another advantage of <code>async</code>/<code>await</code> keywords is that we can use regular <code>try</code>/<code>catch</code> statement. This is not possible plain promises because the callback function is always invoked asynchronously.</p>
-<p>To illustrate how <code>async</code>/<code>await</code> is combined with <code>try</code>/<code>catch</code> blocks,</p>
-<ol>
-<li>convert promise chain into asynchronous function</li>
-<li>Add regular <code>try</code>/<code>catch</code> statement</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchGithubUser</span> (<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">const</span> body = <span class="keyword">await</span> resp.json()</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (resp.status !== <span class="number">200</span>) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="built_in">Error</span>(body.message)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> body</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">showGithubUser</span> (<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">const</span> user = fetchGithubUser(handle)</div><div class="line">    <span class="built_in">console</span>.log(user.name)</div><div class="line">    <span class="built_in">console</span>.log(user.location)</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Error: <span class="subst">$&#123;err.message&#125;</span>`</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+<p><img src="/images/async_screenshot1.png" alt="This is the result of execution"></p></p>
+            <p class="article-more-link">
+                <a href="/2017/05/03/Asynchronous-JavaScript-with-async-await/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -307,7 +254,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/" data-id="cj2a0fypq0000c0rifowz5jc6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/" data-id="cj29x7fqd000f1dri28ftiqav" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -443,7 +390,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Search-Insert-Position/" data-id="cj2a0fyq00005c0ri0z3jgc9z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Search-Insert-Position/" data-id="cj29frzk30000aig3x9uzz6ok" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -577,7 +524,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/" data-id="cj2a0fypt0001c0rif56cg0we" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Contains-Duplicate/" data-id="cj297k1pc0007m97hnuwynu1d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -713,7 +660,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj2a0fypz0004c0riq6jbsa1s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/03/Reverse-String/" data-id="cj296xkor0000m97hq0ddi6zk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -849,7 +796,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Single-Number/" data-id="cj2a0fyq20006c0rivyvgc69i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/02/Single-Number/" data-id="cj2874g7000007b7hz1vfk1lg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -987,7 +934,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj2a0fyq40009c0rir5wv5491" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/02/Two-Sum/" data-id="cj2874g7400017b7h8vdip056" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
