@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Asynchronous JavaScript with async/await | Mason&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1. Write an Asynchronous Function with async/awaitHere, we have short function that talks with a github API. 12345678910111213const fetch = require(&apos;node-fetch&apos;)function showGithubUser(handle) &amp;#123;">
+<meta name="keywords" content="JavaScript,ES7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Asynchronous JavaScript with async&#x2F;await">
+<meta property="og:url" content="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/index.html">
+<meta property="og:site_name" content="Mason&#39;s blog">
+<meta property="og:description" content="1. Write an Asynchronous Function with async/awaitHere, we have short function that talks with a github API. 12345678910111213const fetch = require(&apos;node-fetch&apos;)function showGithubUser(handle) &amp;#123;">
+<meta property="og:image" content="https://minsooshin.github.io/images/async_await_cover.jpg">
+<meta property="og:updated_time" content="2017-05-04T05:25:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Asynchronous JavaScript with async&#x2F;await">
+<meta name="twitter:description" content="1. Write an Asynchronous Function with async/awaitHere, we have short function that talks with a github API. 12345678910111213const fetch = require(&apos;node-fetch&apos;)function showGithubUser(handle) &amp;#123;">
+<meta name="twitter:image" content="https://minsooshin.github.io/images/async_await_cover.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Mason&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Mason Shin</h2>
+            <h3 id="title">Front-End Player</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>San Francisco Bay Area</span>
+            <a id="follow" target="_blank" href="https://github.com/minsooshin/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                6
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                9
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/minsooshin/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/mason.shin" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/masonshin/" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Asynchronous-JavaScript-with-async-await" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/images/async_await_cover.jpg" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Asynchronous JavaScript with async/await
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/03/Asynchronous-JavaScript-with-async-await/">
+            <time datetime="2017-05-04T04:37:32.000Z" itemprop="datePublished">2017-05-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ES7/">ES7</a>, <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="1-Write-an-Asynchronous-Function-with-async-await"><a href="#1-Write-an-Asynchronous-Function-with-async-await" class="headerlink" title="1. Write an Asynchronous Function with async/await"></a>1. Write an Asynchronous Function with async/await</h2><p>Here, we have short function that talks with a github API.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">showGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  fetch(url)</div><div class="line">    .then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.json())</div><div class="line">    .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(user.name)</div><div class="line">      <span class="built_in">console</span>.log(user.location)</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">showGithubUser(<span class="string">'minsooshin'</span>)</div></pre></td></tr></table></figure>
+<p>It loads a specific user, and once the response comes back, it parses the body as JSON. Finally, user’s name and location are logged to the console.</p>
+<p><img src="/images/async_screenshot1.png" alt="This is the result of execution"></p>
+<p>Let’s see how we can convert this function into asynchronous function by using the <code>async</code> and <code>await</code> keywords.</p>
+<ol>
+<li>Make the function asynchronous by adding the <code>async</code> keyword.</li>
+<li>Using the <code>await</code> operator to wait until the fetch call complete.<ul>
+<li>The <code>await</code> operator takes a promise and pause the function execution until the promise is settled.</li>
+</ul>
+</li>
+<li>Assign the return value from <code>await</code> operator to a variable.</li>
+<li>Take the body of the response and parse it as JSON.</li>
+<li>Print out the result.</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">showGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> resp.json()</div><div class="line">  <span class="built_in">console</span>.log(user.name)</div><div class="line">  <span class="built_in">console</span>.log(user.location)</div><div class="line">&#125;</div><div class="line"></div><div class="line">showGithubUser(<span class="string">'minsooshin'</span>)</div></pre></td></tr></table></figure>
+<p>To use this <code>async</code>/<code>await</code>, please user node 7.6 or up.</p>
+<h2 id="2-Call-an-Asynchronous-Function-in-a-Promise-Chain"><a href="#2-Call-an-Asynchronous-Function-in-a-Promise-Chain" class="headerlink" title="2. Call an Asynchronous Function in a Promise Chain"></a>2. Call an Asynchronous Function in a Promise Chain</h2><p>Now, <code>showGithubUser</code> function fetches the user from the github API, and then prints the name and location to the console. Let’s refactor this program such that the function only retrieves the user and returns to the caller who can decide what to do with it.</p>
+<ol>
+<li>Get rid of the <code>console.log</code> lines and just return the user; the <code>showGithubUser</code> is called, it returns the promise.</li>
+<li>We can build a promise chain with the <code>.then</code> method.</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchGithubUser</span>(<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">await</span> resp.json()</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(user.name)</div><div class="line">    <span class="built_in">console</span>.log(user.location)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>This example shows that it is quite easy to call an asynchronous function as part of a promise chain. Every <code>async</code> function returns a promise, so you can simply call <code>.then</code> and <code>.catch</code> of the return value.</p>
+<h2 id="3-Convert-Any-Function-into-an-Asynchronous-Function"><a href="#3-Convert-Any-Function-into-an-Asynchronous-Function" class="headerlink" title="3. Convert Any Function into an Asynchronous Function"></a>3. Convert Any Function into an Asynchronous Function</h2><p>JavaScript allows us to convert any function into an async function. So far, we’ve worked function declaration, but we haven’t yet looked at function expressions, arrow functions, or methods. Let’s convert this function declaration into a function expression.</p>
+<ol>
+<li>Cut the name, <code>fetchGithubUser</code>, and introduce a variable and then assign the function expression.</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="comment">// function expression</span></div><div class="line"><span class="keyword">const</span> fetchGithubUser = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params">handle</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">  <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">await</span> resp.json()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// arrow function</span></div><div class="line"><span class="comment">// const showGithubUser = async function (handle) =&gt; &#123;</span></div><div class="line"></div><div class="line">fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(user.name)</div><div class="line">    <span class="built_in">console</span>.log(user.location)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>Let’s look at a good use case for an asynchronous function expression. The <code>await</code> keyword only be used in an asynchronous functions, so we cannot use it at the top level of the file.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// this code doesn't work</span></div><div class="line"><span class="keyword">const</span> user = <span class="keyword">await</span> fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line"><span class="built_in">console</span>.log(user.name)</div><div class="line"><span class="built_in">console</span>.log(user.location)</div><div class="line"></div><div class="line"><span class="comment">// to fix, wrap with `async`</span></div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> fetchGithubUser(<span class="string">'minsooshin'</span>)</div><div class="line">  <span class="built_in">console</span>.log(user.name)</div><div class="line">  <span class="built_in">console</span>.log(user.location)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>Finally, let’s implement asynchronous class method.</p>
+<ol>
+<li>define a class with <code>GithubApiClient</code> name.</li>
+<li>define a method to fetch user data.</li>
+<li>put <code>async</code> keyword in front of the method.</li>
+<li>create an instance of the class</li>
+<li>call the method with using the instance</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fetch = <span class="built_in">require</span>(<span class="string">'node-fetch'</span>)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GithubApiClient</span> </span>&#123;</div><div class="line">  <span class="keyword">async</span> fetchUser (handle) &#123;</div><div class="line">    <span class="keyword">const</span> url = <span class="string">`https://api.github.com/users/<span class="subst">$&#123;handle&#125;</span>`</span></div><div class="line">    <span class="keyword">const</span> resp = <span class="keyword">await</span> fetch(url)</div><div class="line">    <span class="keyword">return</span> <span class="keyword">await</span> resp.json()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> client = <span class="keyword">new</span> GithubApiClient()</div><div class="line">  <span class="keyword">const</span> user = <span class="keyword">await</span> client.fetchUser(<span class="string">'minsooshin'</span>)</div><div class="line">  <span class="built_in">console</span>.log(user.name)</div><div class="line">  <span class="built_in">console</span>.log(user.location)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/" data-id="cj29yxnv10000uorib6d5fq3w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/05/03/Search-Insert-Position/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Search Insert Position</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tutorial/">tutorial</a></p>
+                            <p class="item-title"><a href="/2017/05/03/Asynchronous-JavaScript-with-async-await/" class="title">Asynchronous JavaScript with async/await</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T04:37:32.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/03/Search-Insert-Position/" class="title">Search Insert Position</a></p>
+                            <p class="item-date"><time datetime="2017-05-03T20:29:37.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/03/Contains-Duplicate/" class="title">Contains Duplicate</a></p>
+                            <p class="item-date"><time datetime="2017-05-03T16:39:30.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/03/Reverse-String/" class="title">Reverse String</a></p>
+                            <p class="item-date"><time datetime="2017-05-03T16:22:02.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/02/Single-Number/" class="title">Single Number</a></p>
+                            <p class="item-date"><time datetime="2017-05-02T21:49:32.000Z" itemprop="datePublished">2017-05-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES7/">ES7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit-manipulation/">bit manipulation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Mason Shin<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://minsooshin.github.io/2017/05/03/Asynchronous-JavaScript-with-async-await/';
+        
+        this.page.identifier = 'Asynchronous-JavaScript-with-async-await';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
