@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mason&#39;s blog">
 <meta property="og:description" content="최근 자바스크립트 프레임워크들이 당신이 주로 다루는 것이라면, 아마도 최근들어 사람들이 React Fiber 에 대해서 이야기 하는 것을 들어봤을 것 입니다. React 의 “다음 버전”을 학수 고대하고 그것을 적용하여 당신의 앱들을 모던 앱의 가볍고 빠르게 변화시키고 싶을지도 모릅니다. 또 한편으로 좌절감이 느껴질 정도로 빠른 자바스크립트 프레임워크들의">
 <meta property="og:image" content="https://minsooshin.github.io/images/react_fiber.png">
-<meta property="og:updated_time" content="2017-05-11T18:04:45.000Z">
+<meta property="og:updated_time" content="2017-05-11T18:09:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Fiber: 사실에 입각한 루머 정리">
 <meta name="twitter:description" content="최근 자바스크립트 프레임워크들이 당신이 주로 다루는 것이라면, 아마도 최근들어 사람들이 React Fiber 에 대해서 이야기 하는 것을 들어봤을 것 입니다. React 의 “다음 버전”을 학수 고대하고 그것을 적용하여 당신의 앱들을 모던 앱의 가볍고 빠르게 변화시키고 싶을지도 모릅니다. 또 한편으로 좌절감이 느껴질 정도로 빠른 자바스크립트 프레임워크들의">
@@ -246,6 +246,7 @@
             <p>최근 자바스크립트 프레임워크들이 당신이 주로 다루는 것이라면, 아마도 최근들어 사람들이 <strong>React Fiber</strong> 에 대해서 이야기 하는 것을 들어봤을 것 입니다.</p>
 <p><strong>React</strong> 의 “다음 버전”을 학수 고대하고 그것을 적용하여 당신의 앱들을 모던 앱의 가볍고 빠르게 변화시키고 싶을지도 모릅니다. 또 한편으로 좌절감이 느껴질 정도로 빠른 자바스크립트 프레임워크들의 발생, 진화, 소멸의 속도를 보면, 이 <strong>Fiber</strong> 도 당신에게 극심한 혼돈을 야기할 수도 있습니다.</p>
 <p>자, 심호흡 한 번 하시고 이제 시작하겠습니다. 이 글의 목적은 당신을 조금이라도 안도하게 하고 <strong>Fiber</strong> 에 관한 잘못된 상식들을 바로 잡고자 함입니다.</p>
+<a id="more"></a>
 <h1 id="Fiber는-무엇인가"><a href="#Fiber는-무엇인가" class="headerlink" title="Fiber는 무엇인가?"></a>Fiber는 무엇인가?</h1><p>먼저, <strong>Fiber</strong> 가 아닌 것부터 짚고 넘어가야 합니다. <strong>Fiber</strong> 는 새로운 프레임워크가 아니고 <strong>React</strong> 에 망가진 API를 야기하기도 않습니다. 다시 말하지만, <strong>Fiber</strong> 는 어떠한 API도 망가뜨리지 않습니다.</p>
 <p>대신, <strong>React Fiber</strong> 는 <strong>React</strong> 의 핵심 알고리즘을 분해해서 새로 쓴 것입니다. 비록 <strong>React</strong> 의 외부 API가 React 팀으로 하여금 좋은 기능들(render로 부터 <a href="https://twitter.com/dan_abramov/status/805037210613534720?lang=en" target="_blank" rel="external">배열을 반환</a>할 수 있는 것과 같은)을 추가할 수 있게 해주지만, <strong>Fiber</strong> 는 <strong>React</strong> 의 내부적인 작동방식을 바꾼 것이지, <strong>React</strong> 의 외부 API를 바꾼 것이 아닙니다.</p>
 <h1 id="작동원리"><a href="#작동원리" class="headerlink" title="작동원리"></a>작동원리</h1><p><strong>React Fiber</strong> 는 <strong>React</strong> 의 조정자를 다시 쓴 것입니다. <strong>React</strong> 에서, 조정자는 virtual DOM의 차이점 구별과 업데이트를 담당합니다. 이는 페이지에 나타내는 renderer로 virtual DOM을 보내기 전에 그것들을 업데이트합니다. 이 조정자를 renderer로 부터 독립시킴으로써 <strong>React</strong> 가 다른 플랫폼(예: React Native)을 목표로 하는 renderer들과도 작동할 수 있게 하는 것입니다.</p>
@@ -271,7 +272,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/11/React-Fiber-사실에-입각한-루머-정리/" data-id="cj2kq7u4y0006yj7hgtpew35o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/11/React-Fiber-사실에-입각한-루머-정리/" data-id="cj2kqaj110009037hwypdguhp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
