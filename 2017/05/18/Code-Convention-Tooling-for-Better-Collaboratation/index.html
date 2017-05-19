@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Code Convention Tooling for Better Collaboratation | Mason&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="If you have worked at any size of company before or now, you have had the difficulty about inconsistent code styles to work with. I have worked at a company which has front-end code based on Rails pla">
+<meta name="keywords" content="JavaScript,React,Eslint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Code Convention Tooling for Better Collaboratation">
+<meta property="og:url" content="https://minsooshin.github.io/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/index.html">
+<meta property="og:site_name" content="Mason&#39;s blog">
+<meta property="og:description" content="If you have worked at any size of company before or now, you have had the difficulty about inconsistent code styles to work with. I have worked at a company which has front-end code based on Rails pla">
+<meta property="og:image" content="https://minsooshin.github.io/images/code_convention_banner.png">
+<meta property="og:updated_time" content="2017-05-19T03:25:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Code Convention Tooling for Better Collaboratation">
+<meta name="twitter:description" content="If you have worked at any size of company before or now, you have had the difficulty about inconsistent code styles to work with. I have worked at a company which has front-end code based on Rails pla">
+<meta name="twitter:image" content="https://minsooshin.github.io/images/code_convention_banner.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Mason&#39;s blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Mason Shin</h2>
+            <h3 id="title">Front-End Player</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>San Francisco Bay Area</span>
+            <a id="follow" target="_blank" href="https://github.com/minsooshin/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                10
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/minsooshin/" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.facebook.com/mason.shin" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://www.linkedin.com/in/masonshin/" target="_blank" title="linkedin" class=tooltip>
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Code-Convention-Tooling-for-Better-Collaboratation" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="/images/code_convention_banner.png" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Code Convention Tooling for Better Collaboratation
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/">
+            <time datetime="2017-05-18T20:14:53.000Z" itemprop="datePublished">2017-05-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Eslint/">Eslint</a>, <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/React/">React</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>If you have worked at any size of company before or now, you have had the difficulty about inconsistent code styles to work with. I have worked at a company which has front-end code based on Rails platform. At that time, it was really diffult to have code convention tools for front-end. So, whenever someone has pull request to get review, other engineers need to make a comment on each code convention issue. Obviously, there were some struggling about those comments since it doesn’t affect on the performance at all, it just style preference, and it cannot be agreed from all of the engineering team sometimes. In that situation, some engineers ignore the comment and merge their pull request without applying it, and it can be a critical communication issue.</p>
+<p>Fortunately, the architect team decided to move on to node.js platform for front-end, and we could introduce code convention tools for entire JavaScript code. Then, integrated with CI tool, jenkins, to run lint testing whenever there is new pull request created.</p>
+<p>I would like to share how to set up the linter tool for JavaScript code base application, and how to integrate with Travis CI for your personal projects on Github.</p>
+<a id="more"></a>
+<h3 id="Setup-Repository"><a href="#Setup-Repository" class="headerlink" title="Setup Repository"></a>Setup Repository</h3><p>As for now, <strong>Eslint</strong> is the most popular tool for linting the JavaScript code, so I will introduce it to validate the JavaScript code convention. Let’s set up a repository for this example.</p>
+<p><img src="/images/code_convention_1.png" alt="Create a repository at Github"></p>
+<p>Once you created the repository, let’s clone it on your local machine.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git@github.com:minsooshin/codeConventionTooling.git</div><div class="line">$ <span class="built_in">cd</span> codeConventionTooling</div></pre></td></tr></table></figure>
+<h3 id="Install-Packages"><a href="#Install-Packages" class="headerlink" title="Install Packages"></a>Install Packages</h3><p>For this example, we will need some modules to run our application.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ yarn init  <span class="comment"># or npm init</span></div><div class="line">$ yarn add --dev babel-core</div><div class="line">$ yarn add --dev babel-plugin-transform-object-rest-spread</div><div class="line">$ yarn add --dev babel-preset-es2015</div><div class="line">$ yarn add --dev eslint</div><div class="line">$ yarn add --dev eslint-friendly-formatter</div><div class="line">$ yarn add --dev eslint-watch</div></pre></td></tr></table></figure>
+<p>I add one by one to show which packages are needed, you can do this with one line command. Once you installed the packages, your <code>package.json</code> file will look like this.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"codeConventionTooling"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"code convention tooling example"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"repository"</span>: <span class="string">"git@github.com:minsooshin/codeConventionTooling.git"</span>,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"Mason Shin &lt;js.mason.shin@gmail.com&gt;"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"babel-core"</span>: <span class="string">"^6.24.1"</span>,</div><div class="line">    <span class="attr">"babel-plugin-transform-object-rest-spread"</span>: <span class="string">"^6.23.0"</span>,</div><div class="line">    <span class="attr">"babel-preset-es2015"</span>: <span class="string">"^6.24.1"</span>,</div><div class="line">    <span class="attr">"eslint"</span>: <span class="string">"^3.19.0"</span>,</div><div class="line">    <span class="attr">"eslint-config-airbnb-base"</span>: <span class="string">"^11.2.0"</span>,</div><div class="line">    <span class="attr">"eslint-friendly-formatter"</span>: <span class="string">"^3.0.0"</span>,</div><div class="line">    <span class="attr">"eslint-plugin-import"</span>: <span class="string">"^2.2.0"</span>,</div><div class="line">    <span class="attr">"eslint-watch"</span>: <span class="string">"^3.1.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Set-babel-configuration"><a href="#Set-babel-configuration" class="headerlink" title="Set babel configuration"></a>Set babel configuration</h3><p>To use ES6 syntax, let’s create <code>.babelrc</code> file under the project root directory. Then, add these lines.<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"presets"</span>: [<span class="string">"es2015"</span>],</div><div class="line">  <span class="attr">"plugins"</span>: [<span class="string">"transform-object-rest-spread"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Initiate-Eslint"><a href="#Initiate-Eslint" class="headerlink" title="Initiate Eslint"></a>Initiate Eslint</h3><p>Now, we can setup our eslint configuration with installed package. Run this command on your terminal.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./node_modules/.bin/eslint --init</div></pre></td></tr></table></figure></p>
+<p>It will propmt this question to you.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">? How would you like to configure ESLint?</div><div class="line">❯ Answer questions about your style</div><div class="line">  Use a popular style guide</div><div class="line">  Inspect your JavaScript file(s)</div></pre></td></tr></table></figure></p>
+<p>Select <code>Use a popular style guide</code>, then next question will be this.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">? Which style guide <span class="keyword">do</span> you want to follow? (Use arrow keys)</div><div class="line">❯ Google</div><div class="line">  Airbnb</div><div class="line">  Standard</div></pre></td></tr></table></figure></p>
+<p>I use <code>Airbnb</code> most of cases. So, I will select <code>Airbnb</code>, then next.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">? Do you use React? (y/N)</div></pre></td></tr></table></figure></p>
+<p>If you are creating React app, then type <code>y</code>, but I will type <code>N</code> in this example since I am not creating React app. Then, you will see the last question.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">? What format <span class="keyword">do</span> you want your config file to be <span class="keyword">in</span>? (Use arrow keys)</div><div class="line">❯ JavaScript</div><div class="line">  YAML</div><div class="line">  JSON</div></pre></td></tr></table></figure>
+<p>I am using <code>JavaScript</code> format for the <code>eslintrc</code>, so it will generate <code>.eslintrc.js</code> file for me.</p>
+<h3 id="NPM-Scripts"><a href="#NPM-Scripts" class="headerlink" title="NPM Scripts"></a>NPM Scripts</h3><p>As you know, we need to set up the npm scripts to execute our expected behaviors in the <code>package.json</code>. Open the <code>package.json</code> file, and add <code>&quot;scripts&quot;</code> property above the <code>&quot;devDependencies&quot;</code>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"scripts": &#123;</div><div class="line">  "eslint": "./node_modules/.bin/eslint src --ext .js"</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>Once you have this in your <code>package.json</code> file, you can validate your JavaScript files under <code>src</code> directory with <code>yarn run eslint</code> command. If you are using <code>npm</code>, then use <code>npm</code> instead of <code>yarn</code>.</p>
+<h3 id="Example-Code"><a href="#Example-Code" class="headerlink" title="Example Code"></a>Example Code</h3><p>I will create an JavaScript file which exports simple funciton returns the input array has duplicates or not.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// src/containsDuplicate.js</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @param &#123;number[]&#125; nums</div><div class="line"> * @return &#123;boolean&#125;</div><div class="line"> */</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">containsDuplicate</span> (<span class="params">nums</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = <span class="keyword">new</span> <span class="built_in">Set</span>()</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (seen.has(nums[i])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      seen.add(nums[i])</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Once you saved this file, let’s execute the command for validate code.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yarn run eslint</div></pre></td></tr></table></figure></p>
+<p>You will get this result from the command.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">yarn run v0.24.4</div><div class="line">$ ./node_modules/.bin/eslint src --ext .js</div><div class="line"></div><div class="line">/Users/mshin/Workspace/github/codeConventionTooling/src/containsDuplicate.js</div><div class="line">   5:42  error  Unexpected space before <span class="keyword">function</span> parentheses  space-before-function-paren</div><div class="line">   6:25  error  Missing semicolon                             semi</div><div class="line">   7:36  error  Unary operator <span class="string">'++'</span> used                      no-plusplus</div><div class="line">   9:18  error  Missing semicolon                             semi</div><div class="line">  10:12  error  Unnecessary <span class="string">'else'</span> after <span class="string">'return'</span>             no-else-return</div><div class="line">  11:24  error  Missing semicolon                             semi</div><div class="line">  14:15  error  Missing semicolon                             semi</div><div class="line"></div><div class="line">✖ 7 problems (7 errors, 0 warnings)</div></pre></td></tr></table></figure></p>
+<p>Each error has the error name on it, so you can find out what the error is for from the <a href="http://eslint.org/" target="_blank" rel="external">Eslint website</a>.</p>
+<p>If you don’t want to have the rule which is <code>Airbnb</code> based, you can disable it by adding the rule disabling in the <code>.eslintrc.js</code> file. For example, I usually don’t use semicolon(<code>;</code>) at the end of the line, so I will add this in my <code>.eslintrc.js</code>. The reason why I don’t use semicolon in my code is when I compile the production package, it can be automatically add semicolons.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'rules'</span>: &#123;</div><div class="line">  <span class="string">'semi'</span>: [<span class="number">2</span>, <span class="string">'never'</span>]  <span class="comment">// this is equivalent to 'semi': ['error', 'never']</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Let’s try again our command for validate code. Now, we will get this.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">yarn run v0.24.4</div><div class="line">$ ./node_modules/.bin/eslint src --ext .js</div><div class="line"></div><div class="line">/Users/mshin/Workspace/github/codeConventionTooling/src/containsDuplicate.js</div><div class="line">   5:42  error  Unexpected space before <span class="keyword">function</span> parentheses  space-before-function-paren</div><div class="line">   7:36  error  Unary operator <span class="string">'++'</span> used                      no-plusplus</div><div class="line">  10:12  error  Unnecessary <span class="string">'else'</span> after <span class="string">'return'</span>             no-else-return</div><div class="line"></div><div class="line">✖ 3 problems (3 errors, 0 warnings)</div></pre></td></tr></table></figure></p>
+<p>So, all the semicolon issues are gone. Woohoo!! Let’s take a look at the <code>no-plusplus</code> issue. That <code>++</code> unary operator is used in the <code>for</code> loop, and it is quite common usage, so I wouldn’t like to change my code due to this error. I will add this line to <code>.eslintrc.js</code> based on the instruction of <code>no-plusplus</code> rule page.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"no-plusplus"</span>: [<span class="number">2</span>, &#123; <span class="string">"allowForLoopAfterthoughts"</span>: <span class="literal">true</span> &#125;]</div></pre></td></tr></table></figure>
+<p>Let’s fix other two errors in the code, not updating rules.</p>
+<p>Finally, we get this refult from our validation.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yarn run v0.24.4</div><div class="line">$ ./node_modules/.bin/eslint src --ext .js</div><div class="line">✨  Done <span class="keyword">in</span> 0.68s.</div></pre></td></tr></table></figure></p>
+<p>And the final our <code>containsDuplicate.js</code> file looks like this:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">containsDuplicate</span>(<span class="params">nums</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> seen = <span class="keyword">new</span> <span class="built_in">Set</span>()</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (seen.has(nums[i])) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    seen.add(nums[i])</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>How easy it is!!! Let’s commit changes to move on to Travis CI integration.</p>
+<h2 id="Travis-CI"><a href="#Travis-CI" class="headerlink" title="Travis CI"></a>Travis CI</h2><p>Github supports integration with Travis CI only for the public repositories. So, your repository should be public to use Travis CI for free. Before the integration, please sign up the Travis CI with your Github <a href="https://travis-ci.org/" target="_blank" rel="external">here</a>.</p>
+<p>Once you log in Travis CI, you will see this menu on the screen.<br><img src="/images/code_convention_2.png" alt="Travis CI menu"></p>
+<p>Click on the <code>+</code> icon, then it will show all your Github repositories. Then, click the <code>Sync account</code> button at the top right corner of content, and turn on the codeConventionTooling repository for the CI. I will add the Travis CI badge to my repository to see more easily about the eslint status.</p>
+<p>Go to the repository’s Travis CI configuration by clicking the cog icon next to the repository name. Click the badge icon, then you will get a dialog box. Please select whatever you like as format. I usually use markdown format.<br><img src="/images/code_convention_3.png" alt="badge selection"></p>
+<p>Copy the contents in the textarea, then paste it to your README.md</p>
+<p>Next, we need to add a file to integrate the Travis CI with our repository. Create a file with <code>.travis.yml</code> name, and add these lines.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">language: node_js</div><div class="line">node_js:</div><div class="line">  - &quot;6&quot;</div><div class="line">script:</div><div class="line">  - npm run eslint</div></pre></td></tr></table></figure>
+<p>That is it! Once you commit your change, you will see the Travis CI is triggered. And if the code validation is succeeded, your commit will have green checkmark next to the commit message.</p>
+<p><img src="/images/code_convention_4.png" alt="After passing the code validation"></p>
+<p>Finally, you can see the Travis CI passing badge.</p>
+<p><img src="/images/code_convention_5.png" alt="Passing Badge on README"></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://minsooshin.github.io/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/" data-id="cj2uuutdd0000ma7hy7qc0lxk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="https://minsooshin.github.io/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://minsooshin.github.io/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/05/11/React-Fiber-Reconciling-the-Rumours-with-the-Facts/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">React Fiber: 사실에 입각한 루머 정리</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tutorial/">tutorial</a></p>
+                            <p class="item-title"><a href="/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/" class="title">Code Convention Tooling for Better Collaboratation</a></p>
+                            <p class="item-date"><time datetime="2017-05-18T20:14:53.000Z" itemprop="datePublished">2017-05-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/news/">news</a></p>
+                            <p class="item-title"><a href="/2017/05/11/React-Fiber-Reconciling-the-Rumours-with-the-Facts/" class="title">React Fiber: 사실에 입각한 루머 정리</a></p>
+                            <p class="item-date"><time datetime="2017-05-11T16:29:34.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/08/Find-All-Duplicates-in-an-Array/" class="title">Find All Duplicates in an Array</a></p>
+                            <p class="item-date"><time datetime="2017-05-08T16:38:22.000Z" itemprop="datePublished">2017-05-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Convert-Sorted-Array-to-Binary-Search-Tree/" class="title">Convert Sorted Array to Binary Search Tree</a></p>
+                            <p class="item-date"><time datetime="2017-05-05T04:50:20.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/tutorial/">tutorial</a></p>
+                            <p class="item-title"><a href="/2017/05/03/Asynchronous-JavaScript-with-async-await/" class="title">Asynchronous JavaScript with async/await</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T04:37:32.000Z" itemprop="datePublished">2017-05-03</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/news/">news</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES7/">ES7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eslint/">Eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit-manipulation/">bit manipulation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Mason Shin<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://minsooshin.github.io/2017/05/18/Code-Convention-Tooling-for-Better-Collaboratation/';
+        
+        this.page.identifier = 'Code-Convention-Tooling-for-Better-Collaboratation';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
