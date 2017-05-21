@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mason&#39;s blog">
 <meta property="og:description" content="최근 자바스크립트 프레임워크들이 당신이 주로 다루는 것이라면, 아마도 최근들어 사람들이 React Fiber 에 대해서 이야기 하는 것을 들어봤을 것 입니다. React 의 “다음 버전”을 학수 고대하고 그것을 적용하여 당신의 앱들을 모던 앱의 가볍고 빠르게 변화시키고 싶을지도 모릅니다. 또 한편으로 좌절감이 느껴질 정도로 빠른 자바스크립트 프레임워크들의">
 <meta property="og:image" content="https://minsooshin.github.io/images/react_fiber.png">
-<meta property="og:updated_time" content="2017-05-17T16:45:55.000Z">
+<meta property="og:updated_time" content="2017-05-21T22:44:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Fiber: 사실에 입각한 루머 정리">
 <meta name="twitter:description" content="최근 자바스크립트 프레임워크들이 당신이 주로 다루는 것이라면, 아마도 최근들어 사람들이 React Fiber 에 대해서 이야기 하는 것을 들어봤을 것 입니다. React 의 “다음 버전”을 학수 고대하고 그것을 적용하여 당신의 앱들을 모던 앱의 가볍고 빠르게 변화시키고 싶을지도 모릅니다. 또 한편으로 좌절감이 느껴질 정도로 빠른 자바스크립트 프레임워크들의">
@@ -252,7 +252,7 @@
 <h1 id="작동원리"><a href="#작동원리" class="headerlink" title="작동원리"></a>작동원리</h1><p><strong>React Fiber</strong> 는 <strong>React</strong> 의 조정자를 다시 쓴 것입니다. <strong>React</strong> 에서, 조정자는 virtual DOM의 차이점 구별과 업데이트를 담당합니다. 이는 페이지에 나타내는 renderer로 virtual DOM을 보내기 전에 그것들을 업데이트합니다. 이 조정자를 renderer로 부터 독립시킴으로써 <strong>React</strong> 가 다른 플랫폼(예: React Native)을 목표로 하는 renderer들과도 작동할 수 있게 하는 것입니다.</p>
 <p>현재 <strong>React</strong> 버전에서는, 컴포넌트가 업데이트되면, 조정자는 그 컴포넌트의 내부 표현을 업데이트하고 그 업데이트된 내용을, 실제 DOM을 다시 표현하는, renderer에게 보냅니다. 이 과정은 변경 사항이 실행될 때까지 전체 트리를 통해 계속 진행되며, 모든 업데이트과 필요한 모든 렌더링을 한 번씩 수행합니다. 이와 같은 오래 지속되는 자바스크립트 프로세스의 문제점은 브라우저가 다른 것을 못하게 막는다는 것입니다. 만약, 이 프로세스가 매우 오래 걸리면, 프레임은 버려지고, 렌더링은 질도 떨어지고 느려지게 됩니다.</p>
 <p><strong>Fiber</strong> 라 불리우는 새로운 조정자는 각 엘리먼트의 업데이트를 한 번에 하나씩 처리하고, 다음 엘리먼트로 넘어가기 전에 브라우저가 필요한 모든 작업(사용자 상호작용, 레이아웃, re-render 및 garbage collection)을 수행 할 수도 있도록 해줍니다.</p>
-<p><strong>Fiber</strong> 조정다는 renderer에게 더이상 각 엘리먼트의 업데이트를 보내지 않습니다. 업데이트들을 work-in-progress 트리라 알려진 또다른 virtual DOM에 저장합니다. 이 work-in-progress 트리는 특정 변화들을 계속 기록 합니다. 전체적인 트리가 준비가 되었을 때만, renderer에게 그 업데이트들을 보냅니다.</p>
+<p><strong>Fiber</strong> 조정자는 renderer에게 더이상 각 엘리먼트의 업데이트를 보내지 않습니다. 업데이트들을 work-in-progress 트리라 알려진 또다른 virtual DOM에 저장합니다. 이 work-in-progress 트리는 특정 변화들을 계속 기록 합니다. 전체적인 트리가 준비가 되었을 때만, renderer에게 그 업데이트들을 보냅니다.</p>
 <p><strong>Fiber</strong> 는 또한 인식된 성능의 중요도에 따라 업데이트의 우선 순위를 결정합니다. 매우 중요한 업데이트는 바로 실행합니다. 다른 업데이트들은 스케쥴을 잡고, 브라우저가 그 일을 수행할 여유가 있을 때 실행합니다.</p>
 <p>만약 상위 우선 순위의 업데이트가 우선 순위가 낮은 다른 업데이트들이 끝나기 전에 예약 되면, 이전 업데이트가 어셈블링 중인 work-in-progress 트리가 삭제되고 다시 시작됩니다. 애니메이션과 같은 중요한 업데이트는 인지된 성능에 덜 중요한 업데이트를 기다릴 필요가 없습니다.</p>
 <h1 id="Fiber는-내가-가지고-있는-앱을-망가뜨리는가"><a href="#Fiber는-내가-가지고-있는-앱을-망가뜨리는가" class="headerlink" title="Fiber는 내가 가지고 있는 앱을 망가뜨리는가?"></a>Fiber는 내가 가지고 있는 앱을 망가뜨리는가?</h1><p>간단히 말하면, 아닙니다. React 팀은 이미 현존하는 많은 앱들을 망가뜨릴 수 있는 API 변화를 릴리즈 하지 않기 위해서 매우 조심하고 있다. 보통 그들은 API가 실제로 코드에서 삭제되기 몇 버전 전부터 알림을 추가한다. 심지어 개발자들이 최근 버전으로 <a href="https://github.com/reactjs/react-codemod#react-proptypes-to-prop-types" target="_blank" rel="external">바꿀 수 있도록</a> 도와주는 <a href="https://github.com/reactjs/react-codemod" target="_blank" rel="external">스크립트</a>를 제공한다.</p>
@@ -272,7 +272,7 @@
 
 </div>
 
-    <a data-url="https://minsooshin.github.io/2017/05/11/React-Fiber-Reconciling-the-Rumours-with-the-Facts/" data-id="cj2w2ix3q0009nddmnx26gt34" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://minsooshin.github.io/2017/05/11/React-Fiber-Reconciling-the-Rumours-with-the-Facts/" data-id="cj2zaj93d0005vm7hiosq9dmr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
